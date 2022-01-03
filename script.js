@@ -20,3 +20,19 @@ function setColor() {
         }
     })
 }
+
+$('.saveBtn').on('click', function() {
+    var id = $(this).attr('id')
+    var task = $(this).siblings('textarea').val()
+    localStorage.setItem(id, task)
+    showTask()
+})
+
+showTask()
+
+function showTask() {
+    for(var i = 9; i < 18; i++) {
+        var currentTask = localStorage.getItem(i)
+        $('#'+ i).text(currentTask)
+    }
+}
